@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#scrollBox {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+#videoBox{
+    width: 100%;
+    position: relative;
+}
+#playBtn {
+    position: absolute;
+    left: 42%;
+    top: 35%;
+    right: 0;
+    bottom: 0;
+    display: block;
+    border: none;
+    z-index: 102;
+    width: 15%;
+}
+#shade{
+    position: absolute;
+    z-index: 101;
+    width: 100%;
+    background:none repeat scroll 0 0 rgba(0,0,0,0.5);
+}
+#poster {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+#videoLive {
+    object-position: 0px 0px;
+    width: 100%;
+}

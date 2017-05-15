@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>安卓(Android)微信视频不全屏解决方案-支持视频直播m3u8格式和mp4</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/canvas-video.css"/>
+</head>
+<body>
+<div id="videoBox">
+    <img id="playBtn" src="images/play.png" alt="播放按钮">
+    <img id="poster" src="images/shadeImg.png" alt="遮罩图片">
+    <div id="shade"> &nbsp; </div>
+    <!--<video id="videoBox" controls preload="auto" poster="images/shadeImg.png" x5-video-player-type="h5" x5-video-player-fullscreen="true">-->
+    <video id="videoLive" preload="auto" poster=""  x5-video-player-type="h5" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true">
+        <source src="http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8" type="application/x-mpegURL">
+        <!--<source src="test.mp4">-->
+    </video>
+</div>
+<div id="scrollBox">
+    <div id="content">
+        安卓(Android)微信视频不全屏解决方案
+    </div>
+</div>
+<script src="js/iscroll.js"></script>
+<script src="js/canvas-video.js"></script>
+</body>
+</html>
