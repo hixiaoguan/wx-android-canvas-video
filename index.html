@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>视频直播-微信全屏问题解决方案</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <style>
+        *{
+          margin: 0;
+          padding: 0;
+        }
+        video {
+            object-position: 0px 0px;
+            width: 100%;
+        }
+        #videoBox {
+            position: relative;
+            overflow: hidden;
+        }
+        #playBtn {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            border: none;
+            background: url("images/playBtn.png") center no-repeat;
+            z-index: 1000;
+            width: 100%;
+            background-size: 100px;
+        }
+        #poster {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        #userInfo{
+          position: absolute;
+          left:10px;
+          top:10px;
+          width: 60px;
+          height: 36px;
+          line-height: 36px;
+          border-radius: 18px;
+          color:#fff;
+          text-align: center;
+          background:none repeat scroll 0 0 rgba(0,0,0,0.5);
+          z-index: 1001;
+        }
+        #content{
+          width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div id="videoBox">
+    <input id="playBtn" type="button" value="">
+    <div id="userInfo">
+      小官
+    </div>
+    <!-- 竖屏 -->
+    <video id="videoLive" preload="auto" poster=""  x5-video-player-type="h5" x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true">
+        <source src="http://play.zhibozhongguo.cn/f14k99yj0v311t49vs933c3ssz648um6/null/null/cloudv-live/201707/6f5e0ce9de514fee81527c0c9a75cc31_20170718111904/6f5e0ce9de514fee81527c0c9a75cc31_20170718111904_live2vod.mp4">
+    </video>
+</div>
+<div id="content">
+    内容1<br>
+    内容2<br>
+    内容3<br>
+    内容4<br>
+    内容5<br>
+    内容6<br>
+    内容7<br>
+    内容8<br>
+    内容9<br>
+    内容10<br>
+</div>
+<script>
+
+    //获取video
+    var oPlayer = document.getElementById("videoLive");
+    //播放按钮
+    var oPlayBtn = document.getElementById("playBtn");
+    //获取视频盒子
+    var oVideoBox = document.getElementById("videoBox");
+    //内容区域
+    var oContent = document.getElementById("content");
+    //屏幕发生变化是重置可视区宽高
+    window.onresize = function () {
+        oPlayer.style.width = window.innerWidth + "px";
+        oPlayer.style.height = window.innerHeight + "px";
+        oVideoBox.style.height = oPlayer.offsetHeight + "px";
+    }
+
+    window.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+    }, false);
+
+    //点击视频--控制播放暂停
+    oVideoBox.onclick = function(){
+      if(oPlayer.paused){
+        oPlayer.play();
+        oPlayBtn.style.display = "block";
+      }else{
+        oPlayer.pause();
+        oPlayBtn.style.display = "none";
+      }
+    };
+    //监听播放
+    oPlayer.addEventListener('play', function () {
+        console.log("播放");
+        oPlayBtn.style.display = "none";
+    }, false);
+    //监听暂停
+    oPlayer.addEventListener('pause', function () {
+        console.log("暂停");
+        oPlayBtn.style.display = "block";
+    }, false);
+    //监听结束
+    oPlayer.addEventListener('ended', function () {
+        console.log("结束");
+        oPlayBtn.style.display = "block";
+    }, false);
+
+</script>
+</body>
+</html>
